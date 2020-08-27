@@ -1,0 +1,14 @@
+- name: ensure tmuxinator is installed
+  gem:
+    name: tmuxinator
+    state: latest
+
+- name: ensure tmuxinator completion script path exists
+  file:
+    path: $HOME/.bin
+    state: directory
+
+- name: add tmuxinator completion files
+  get_url:
+    url: https://raw.githubusercontent.com/tmuxinator/tmuxinator/master/completion/tmuxinator.zsh 
+    dest: $HOME/.bin/tmuxinator.zsh

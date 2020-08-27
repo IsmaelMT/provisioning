@@ -1,0 +1,11 @@
+- name: ensure zsh is installed
+  become: yes
+  dnf:
+    name:
+      - zsh
+
+- name: set default zsh shell for user
+  become: yes
+  user:
+    name: '{{ username }}'
+    shell: /bin/zsh

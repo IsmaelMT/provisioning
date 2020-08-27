@@ -1,0 +1,20 @@
+- name: ensure base packages are installed
+  dnf: 
+    name:
+      - htop
+      - git
+      - tig
+      - lshw
+      - tmux
+      - vim
+    state: latest
+
+- name: ensure base python packages are installed
+  dnf:
+    name:
+      python-pip
+
+- name: ensure base ruby packages are installed
+  dnf:
+    name:
+      ruby

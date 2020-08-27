@@ -1,0 +1,6 @@
+- name: ensure nvim is installed
+  become: true
+  dnf:
+    name:
+      - neovim
+      - python3-neovim

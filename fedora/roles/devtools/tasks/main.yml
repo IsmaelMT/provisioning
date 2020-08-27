@@ -1,0 +1,19 @@
+- name: ensure tmux packages are installed
+  include: tmux.yml
+
+- name: ensure zsh packages are installed
+  include: zsh.yml
+
+- name: ensure nvim packages are installed
+  include: nvim.yml
+
+- name: ensure dotfiles are cloned
+  git: 
+    repo: git@github.com:IsmaelMT/dotfiles.git
+    dest: $HOME/dotfiles
+
+- name: ensure dotfiles are installed
+  command: chdir=$HOME/dotfiles sh $HOME/dotfiles/install.sh
+  register: dotfiles_install
+
+- debug: var=dotfiles_install.stdout_lines

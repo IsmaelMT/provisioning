@@ -1,0 +1,8 @@
+# Provisioning ansible scripts
+
+This project is used to build my custom development environment. If you wish to replicate it, you have to change
+the user in the `run.sh` script as well as the user in the `main.yml` playbook.
+
+## How to run
+
+`sh run.sh`

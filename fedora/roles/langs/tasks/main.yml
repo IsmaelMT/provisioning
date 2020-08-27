@@ -1,0 +1,2 @@
+- name: ensure python packages are installed
+  include: python.yml
