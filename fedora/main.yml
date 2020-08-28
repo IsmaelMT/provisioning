@@ -2,6 +2,7 @@
   connection: local
   user: ismaelmt
   roles:
-    - {role: common, become: true}
-    - {role: langs, become: false}
-    - {role: devtools, become: false, username: ismaelmt}
+    # - {role: common, become: true}
+    - {role: nvidia, become: true}
+    # - {role: langs, become: false}
+    # - {role: devtools, become: false, username: ismaelmt}

@@ -1,0 +1,51 @@
+- name: get fedora dist
+  command: rpm -E %fedora
+  register: fedora_dist
+
+- name: ensure rpm fusion packages are installed
+  dnf:
+    name:
+      - 'https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-{{fedora_dist.stdout}}.noarch.rpm'
+      - 'https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-{{fedora_dist.stdout}}.noarch.rpm'
+    state: present
+
+- name: ensure dependency packages are installed
+  dnf:
+    name:
+      - kernel-devel 
+      - kernel-headers 
+      - gcc
+      - make
+      - dkms
+      - acpid
+      - libglvnd-glx
+      - libglvnd-opengl
+      - libglvnd-devel
+      - pkgconfig
+
+- name: blacklist nouveau
+  shell: "echo 'blacklist nouveau' >> /etc/modprobe.d/blacklist.conf"
+
+- name: Replace grub commandline command
+  replace:
+    path: /etc/sysconfig/grub
+    regexp: '^GRUB_CMDLINE_LINUX="(.*)rd.driver.blacklist=nouveau?"'
+    replace: 'GRUB_CMDLINE_LINUX="\1rd.driver.blacklist=nouveau"'
+
+- name: Update grub
+  shell: grub2-mkconfig -o /boot/grub2/grub.cfg && grub2-mkconfig -o /boot/efi/EFI/fedora/grub.cfg
+
+- name: Remove neuveau
+  dnf:
+    name: xorg-x11-drv-nouveau
+    state: absent
+
+- name: Backup old initramfs nouveau image 
+  shell: name=initramfs-*.img && cp /boot/$name /data/
+
+- name: Create new initramfs image
+  shell: dracut /boot/initramfs-$(uname -r).img $(uname -r)
+
+- name: ensure nvidia drivers are installed
+  dnf:
+    name: xorg-x11-drv-nvidia-390xx 
