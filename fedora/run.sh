@@ -3,7 +3,7 @@
 USER=ismaelmt
 
 # Install prerequisites
-sudo dnf install openssh-server -y 
+sudo dnf install openssh-server ansible -y 
 sudo systemctl start sshd
 
 # Run the playbook
