@@ -1,1 +1,2 @@
 - Get my encrypted ssh key and unencrypt and install
+-$ ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
