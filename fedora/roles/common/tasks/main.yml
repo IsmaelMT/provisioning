@@ -6,6 +6,13 @@
     name: "*"
     state: latest
 
+
+- name: set default keyboard layout
+  command: localectl set-keymap us-intl
+  
+- name: set x11 key map
+  command: localectl set-x11-keymap us,us intl
+
 - name: ensure base packages are installed
   dnf: 
     name:
@@ -15,6 +22,13 @@
       - lshw
       - tmux
       - vim
+      - keepassx
+      - fzf
+      - ripgrep
+      - fd-find
+      - the_silver_searcher
+      - ranger
+
     state: latest
 
 - name: ensure base python packages are installed
