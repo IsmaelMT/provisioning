@@ -1,8 +1,18 @@
 - hosts: all
   connection: local
-  user: ismaelmt
+  vars_prompt:
+    - name: hostname
+      prompt: "Enter the desired hostname"
+      private: no
+      default: hyrule
+
+    - name: username
+      prompt: "Enter the username"
+      private: no
+      default: ismaelmt
+  user: "{{username}}"
   roles:
-    # - {role: common, become: true}
+    - {role: common, become: true}
     - {role: langs}
-    # - {role: gnome_conf}
-    # - {role: devtools, username: ismaelmt}
+    - {role: gnome_conf}
+    - {role: devtools}

@@ -1,3 +1,6 @@
+- name: set computer's hostname
+  command: "hostnamectl set-hostname {{hostname}}"
+
 - name: ensure system is updated
   dnf:
     name: "*"
