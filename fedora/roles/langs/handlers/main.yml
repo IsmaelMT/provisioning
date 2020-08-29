@@ -1,4 +1,4 @@
 - name: source zshrc
-  shell: source $HOME/.zshrc
+  shell: source "{{ ansible_env.HOME }}/.zshrc"
   args:
    executable: /bin/zsh

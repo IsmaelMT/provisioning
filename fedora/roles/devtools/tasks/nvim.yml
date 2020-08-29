@@ -8,7 +8,7 @@
 - name: ensure the nvim conf repo is cloned
   git:
     repo: https://github.com/IsmaelMT/nvim-conf.git
-    dest: $HOME/nvim-conf
+    dest: "{{ ansible_env.HOME }}/nvim-conf"
 
 - name: ensure the nvim repo is installed
-  command: chdir=$HOME/nvim-conf sh install.sh
+  command: chdir="{{ ansible_env.HOME }}/nvim-conf sh install.sh"

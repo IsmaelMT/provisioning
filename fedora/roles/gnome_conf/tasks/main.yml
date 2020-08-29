@@ -7,7 +7,7 @@
       - la-capitaine-icon-theme
 
 - name: set wallpaper
-  dconf: key="/org/gnome/desktop/background/picture-uri" value="'file:///$HOME/provisioning/fedora/wallpaper/zelda.jpg'"
+  dconf: key="/org/gnome/desktop/background/picture-uri" value="'file:///{{ ansible_env.HOME }}/provisioning/fedora/wallpaper/zelda.jpg'"
 
 - name: set gnome gtk theme
   dconf: key="/org/gnome/desktop/interface/gtk-theme" value="'Arc-Dark'"

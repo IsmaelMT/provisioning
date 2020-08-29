@@ -4,10 +4,10 @@
       shell: curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python
     - name: Create poetry completions directory if it does not exist
       file:
-        path: $HOME/.oh-my-zsh/plugins/poetry
+        path: "{{ ansible_env.HOME }}/.oh-my-zsh/plugins/poetry"
         state: directory
     - name: install poetry completions for zsh
-      shell: poetry completions zsh > $HOME/.oh-my-zsh/plugins/poetry/_poetry
+      shell: "poetry completions zsh > {{ ansible_env.HOME }}/.oh-my-zsh/plugins/poetry/_poetry"
 
 - name: ensure python base user packages are installed
   become: true
@@ -20,7 +20,7 @@
     extra_args: --user
 
 - name: add pipx binary directories to PATH
-  command: $HOME/.local/bin/pipx ensurepath
+  command: "{{ ansible_env.HOME }}/.local/bin/pipx ensurepath"
 # TODO: add this kind of scripts in templates?
 # - name: add pipx completions
 #   shell: autoload -U bashcompinit && bashcompinit && eval "$(register-python-argcomplete pipx)"
