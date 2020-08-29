@@ -13,7 +13,7 @@
     dest: $HOME/dotfiles
 
 - name: ensure dotfiles are installed
-  command: chdir=$HOME/dotfiles sh $HOME/dotfiles/install.sh
+  command: chdir=$HOME/dotfiles sh install.sh
   register: dotfiles_install
 
 - debug: var=dotfiles_install.stdout_lines

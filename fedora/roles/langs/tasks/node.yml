@@ -1,0 +1,12 @@
+- name: ensure nvm is installed
+  shell: curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+  args:
+    executable: /bin/zsh
+    creates: $HOME/.nvm/nvm.sh
+  notify:
+    - source zshrc
+
+- name: ensure latest node version is installed
+  shell: . $HOME/.nvm/nvm.sh && nvm install node
+  args:
+    executable: /bin/zsh

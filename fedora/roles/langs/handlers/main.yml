@@ -1,0 +1,4 @@
+- name: source zshrc
+  shell: source $HOME/.zshrc
+  args:
+   executable: /bin/zsh

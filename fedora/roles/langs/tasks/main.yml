@@ -1,2 +1,5 @@
 - name: ensure python packages are installed
   include: python.yml
+
+- name: ensure node packages are installed
+  include: node.yml

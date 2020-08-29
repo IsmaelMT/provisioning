@@ -17,7 +17,8 @@
 - name: ensure base python packages are installed
   dnf:
     name:
-      python-pip
+      - python-pip
+      - python-psutil
 
 - name: ensure base ruby packages are installed
   dnf:

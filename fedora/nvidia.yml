@@ -1,6 +1,7 @@
 - hosts: all
   connection: local
   user: ismaelmt
+  become: true
   tasks:
     - name: get fedora dist
       command: rpm -E %fedora
@@ -60,4 +61,3 @@
     
     - name: Create new initramfs image
       shell: dracut /boot/initramfs-$(uname -r).img $(uname -r)
-    
