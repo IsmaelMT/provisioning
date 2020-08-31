@@ -36,6 +36,7 @@
     name:
       - python-pip
       - python-psutil
+      - python-devel
 
 - name: ensure base ruby packages are installed
   dnf:

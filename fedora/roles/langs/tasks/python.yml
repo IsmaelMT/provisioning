@@ -8,11 +8,15 @@
         state: directory
     - name: install poetry completions for zsh
       shell: "poetry completions zsh > {{ ansible_env.HOME }}/.oh-my-zsh/plugins/poetry/_poetry"
+    - name: update poetry
+      command: poetry self update --preview
 
 - name: ensure python base user packages are installed
   become: true
   pip:
-    name: ranger-fm
+    name:
+      - ranger-fm
+      - virtualenvwrapper
 
 - name: ensure python base user packages are installed
   pip:
