@@ -16,6 +16,7 @@
 - name: ensure base packages are installed
   dnf: 
     name:
+      # tools
       - htop
       - git
       - tig
@@ -28,7 +29,16 @@
       - fd-find
       - the_silver_searcher
       - ranger
+      - gimp
+      # system packages
+      - openssl-devel
+      - tk-devel
+      - java-latest-openjdk.x86_64
 
+- name: install c related dev tools
+  yum:
+    name:
+      - groupinstall 'Development Tools'
     state: latest
 
 - name: ensure base python packages are installed
@@ -37,6 +47,7 @@
       - python-pip
       - python-psutil
       - python-devel
+      - python3-tkinter
 
 - name: ensure base ruby packages are installed
   dnf:
