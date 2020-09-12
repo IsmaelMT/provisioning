@@ -10,3 +10,23 @@
   shell: ". {{ ansible_env.HOME }}/.nvm/nvm.sh && nvm install node"
   args:
     executable: /bin/zsh
+
+- name: ensure yarn repo is addded
+  become: true
+  yum_repository:
+    name: yarn
+    description: Yarn repository
+    baseurl: "https://dl.yarnpkg.com/rpm"
+    gpgcheck: yes
+    enabled: 1
+    gpgkey: "https://dl.yarnpkg.com/rpm/pubkey.gpg"
+  tags:
+    - packages
+
+- name: ensure yarn is installed
+  become: true
+  dnf:
+    name:
+      - yarn
+  tags:
+    - packages
