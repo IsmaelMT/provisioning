@@ -23,6 +23,11 @@
     name: pipx
     extra_args: --user
 
+- name: enseure pyenv is installed
+  block:
+    - shell: curl https://pyenv.run | bash
+    - command: "exec {{ ansible_env.SHELL }}"
+
 - name: add pipx binary directories to PATH
   command: "{{ ansible_env.HOME }}/.local/bin/pipx ensurepath"
 # TODO: add this kind of scripts in templates?
