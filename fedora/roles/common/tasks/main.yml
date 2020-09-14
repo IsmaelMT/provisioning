@@ -34,6 +34,9 @@
       - openssl-devel
       - tk-devel
       - java-latest-openjdk.x86_64
+      - java-devel
+      - ffmpeg
+      - ffmpeg-devel
 
 - name: install c related dev tools
   yum:
