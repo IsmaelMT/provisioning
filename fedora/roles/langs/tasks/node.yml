@@ -20,13 +20,9 @@
     gpgcheck: yes
     enabled: 1
     gpgkey: "https://dl.yarnpkg.com/rpm/pubkey.gpg"
-  tags:
-    - packages
 
 - name: ensure yarn is installed
   become: true
   dnf:
     name:
       - yarn
-  tags:
-    - packages

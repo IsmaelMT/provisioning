@@ -7,6 +7,7 @@ sudo dnf install openssh-server ansible -y
 sudo systemctl start sshd
 
 # TODO: copy the ssh key
+# TODO: Add git config email and user
 
 # Run the playbook
 ansible-playbook main.yml -i hosts -u $USER -K -v

@@ -12,7 +12,7 @@
       default: ismaelmt
   user: "{{username}}"
   roles:
-    # - {role: common, become: true}
+    - {role: common, become: true}
     - {role: langs}
-    # - {role: gnome_conf}
-    # - {role: devtools}
+    - {role: gnome_conf}
+    - {role: devtools}
